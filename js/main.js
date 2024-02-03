@@ -88,13 +88,16 @@ import { sendData } from "./sendData.js";
 
 // forms
 const forms = document.querySelectorAll("form");
+const mainScript = document.querySelector("#main-script")
+const currentApi = mainScript.getAttribute("data-api");
+const currentSheet = mainScript.getAttribute("data-sheet");
 
 forms.forEach((form) => {
     form.addEventListener("submit", (e) => {
         e.preventDefault();
         
         // send data
-        sendData(form);
+        sendData(currentApi, currentSheet, form);
 
         // success message
         successMessage();
